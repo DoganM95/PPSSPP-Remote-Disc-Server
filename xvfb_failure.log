@@ -1,0 +1,35 @@
+Restarting PPSSPP..
+X connection to :99 broken (explicit kill or server shutdown).
+terminate called without an active exception
+rm: cannot remove '/tmp/.X99-lock': No such file or directory
+error: XDG_RUNTIME_DIR not set in the environment.
+Failed to initialize SDL with joystick support. Retrying without.
+error: XDG_RUNTIME_DIR not set in the environment.
+Unable to initialize SDL: No available video device
+VulkanMayBeAvailable: Device allowed ('SDL:Linux')
+VulkanMayBeAvailable: Library loaded ('libvulkan.so')
+VulkanMayBeAvailable: Enumerating instance extensions
+VulkanMayBeAvailable: Instance extension count: 18
+VulkanMaybeAvailable: Instance extension found: VK_KHR_device_group_creation (00000001)
+VulkanMaybeAvailable: Instance extension found: VK_KHR_external_fence_capabilities (00000001)
+VulkanMaybeAvailable: Instance extension found: VK_KHR_external_memory_capabilities (00000001)
+VulkanMaybeAvailable: Instance extension found: VK_KHR_external_semaphore_capabilities (00000001)
+VulkanMaybeAvailable: Instance extension found: VK_KHR_get_display_properties2 (00000001)
+VulkanMaybeAvailable: Instance extension found: VK_KHR_get_physical_device_properties2 (00000001)
+VulkanMaybeAvailable: Instance extension found: VK_KHR_get_surface_capabilities2 (00000001)
+VulkanMaybeAvailable: Instance extension found: VK_KHR_surface (00000019)
+VulkanMaybeAvailable: Instance extension found: VK_KHR_surface_protected_capabilities (00000001)
+VulkanMaybeAvailable: Instance extension found: VK_KHR_wayland_surface (00000006)
+VulkanMaybeAvailable: Instance extension found: VK_KHR_xcb_surface (00000006)
+VulkanMaybeAvailable: Instance extension found: VK_KHR_xlib_surface (00000006)
+VulkanMaybeAvailable: Instance extension found: VK_KHR_display (00000017)
+VulkanMaybeAvailable: Instance extension found: VK_EXT_direct_mode_display (00000001)
+VulkanMaybeAvailable: Instance extension found: VK_EXT_acquire_xlib_display (00000001)
+VulkanMaybeAvailable: Instance extension found: VK_EXT_display_surface_counter (00000001)
+VulkanMaybeAvailable: Instance extension found: VK_EXT_debug_report (00000009)
+VulkanMaybeAvailable: Instance extension found: VK_EXT_debug_utils (00000001)
+VulkanMayBeAvailable: Calling vkCreateInstance
+VulkanMayBeAvailable: Vulkan test instance created successfully.
+VulkanMayBeAvailable: Failed to count physical devices (VK_ERROR_INITIALIZATION_FAILED)
+VulkanMayBeAvailable: Destroying instance
+DEBUG: Vulkan is not available, not using Vulkan.

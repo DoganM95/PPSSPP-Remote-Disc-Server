@@ -1,0 +1,44 @@
+Restarting PPSSPP..
+rm: cannot remove '/tmp/.X99-lock': No such file or directory
+12:45:426 Core/Config.cpp:544 I[G3D]: Longest display side: -1 pixels. Choosing scale 1
+ALSA lib confmisc.c:767:(parse_card) cannot find card '0'
+ALSA lib conf.c:4732:(_snd_config_evaluate) function snd_func_card_driver returned error: No such file or directory
+ALSA lib confmisc.c:392:(snd_func_concat) error evaluating strings
+ALSA lib conf.c:4732:(_snd_config_evaluate) function snd_func_concat returned error: No such file or directory
+ALSA lib confmisc.c:1246:(snd_func_refer) error evaluating name
+ALSA lib conf.c:4732:(_snd_config_evaluate) function snd_func_refer returned error: No such file or directory
+ALSA lib conf.c:5220:(snd_config_expand) Evaluate error: No such file or directory
+ALSA lib pcm.c:2642:(snd_pcm_open_noupdate) Unknown PCM default
+12:45:473 SDL/SDLMain.cpp:121 E[AUDIO]: Failed to open audio device: ALSA: Couldn't open audio device: No such file or directory
+VulkanMayBeAvailable: Device allowed ('SDL:Linux')
+VulkanMayBeAvailable: Library loaded ('libvulkan.so')
+VulkanMayBeAvailable: Enumerating instance extensions
+VulkanMayBeAvailable: Instance extension count: 18
+VulkanMaybeAvailable: Instance extension found: VK_KHR_device_group_creation (00000001)
+VulkanMaybeAvailable: Instance extension found: VK_KHR_external_fence_capabilities (00000001)
+VulkanMaybeAvailable: Instance extension found: VK_KHR_external_memory_capabilities (00000001)
+VulkanMaybeAvailable: Instance extension found: VK_KHR_external_semaphore_capabilities (00000001)
+VulkanMaybeAvailable: Instance extension found: VK_KHR_get_display_properties2 (00000001)
+VulkanMaybeAvailable: Instance extension found: VK_KHR_get_physical_device_properties2 (00000001)
+VulkanMaybeAvailable: Instance extension found: VK_KHR_get_surface_capabilities2 (00000001)
+VulkanMaybeAvailable: Instance extension found: VK_KHR_surface (00000019)
+VulkanMaybeAvailable: Instance extension found: VK_KHR_surface_protected_capabilities (00000001)
+VulkanMaybeAvailable: Instance extension found: VK_KHR_wayland_surface (00000006)
+VulkanMaybeAvailable: Instance extension found: VK_KHR_xcb_surface (00000006)
+VulkanMaybeAvailable: Instance extension found: VK_KHR_xlib_surface (00000006)
+VulkanMaybeAvailable: Instance extension found: VK_KHR_display (00000017)
+VulkanMaybeAvailable: Instance extension found: VK_EXT_direct_mode_display (00000001)
+VulkanMaybeAvailable: Instance extension found: VK_EXT_acquire_xlib_display (00000001)
+VulkanMaybeAvailable: Instance extension found: VK_EXT_display_surface_counter (00000001)
+VulkanMaybeAvailable: Instance extension found: VK_EXT_debug_report (00000009)
+VulkanMaybeAvailable: Instance extension found: VK_EXT_debug_utils (00000001)
+VulkanMayBeAvailable: Calling vkCreateInstance
+VulkanMayBeAvailable: Vulkan test instance created successfully.
+VulkanMayBeAvailable: Failed to count physical devices (VK_ERROR_INITIALIZATION_FAILED)
+VulkanMayBeAvailable: Destroying instance
+DEBUG: Vulkan is not available, not using Vulkan.
+Info: We compiled against SDL version 2.0.10 and we are linking against SDL version 2.0.10. :)
+Pixels: 960 x 544
+Virtual pixels: 960 x 544
+OpenGL 2.0 or higher.
+loading control pad mappings from gamecontrollerdb.txt: SUCCESS!
