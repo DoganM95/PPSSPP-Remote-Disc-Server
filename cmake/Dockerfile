@@ -1,5 +1,7 @@
+# Use latest Ubuntu as base image
 FROM ubuntu:latest
 
+# Set working directory
 WORKDIR /usr/src/app
 
 # Update apt sources
@@ -45,38 +47,12 @@ RUN chmod +rx ./entrypoint.sh
 # Setting permissions for home dir
 RUN chmod -R ugo+rwx /root/
 
-# Creating stuff ppsspp fails to create itself and more (GAME, ISO, ...)
+# Creating stuff ppsspp fails to create in this context but needs
 RUN mkdir -p "/root/.config/ppsspp/PSP/GAME"
 RUN mkdir -p "/root/.config/ppsspp/PSP/SYSTEM"
 
 RUN touch "/root/.config/ppsspp/PSP/SYSTEM/controls.ini"
 RUN touch "/root/.config/ppsspp/PSP/SYSTEM/ppsspp.ini"
-
-# # Create a fresh ppsspp.ini with necessery settings
-# RUN echo "[General]\n \
-#     FirstRun = False\n \
-#     RunCount = 1337\n \
-#     Enable Logging = True\n \
-#     AutoRun = True\n \
-#     IgnoreBadMemAccess = True\n \
-#     CacheFullIsoInRam = False\n \
-#     RemoteISOPort = 8300\n \
-#     LastRemoteISOServer = localhost\n \
-#     LastRemoteISOPort = 8300\n \
-#     RemoteISOManualConfig = True\n \
-#     RemoteShareOnStartup = True\n \
-#     RemoteISOSubdir = /\n \
-#     RemoteDebuggerOnStartup = False\n \
-#     PauseOnLostFocus = False\n \
-#     PauseWhenMinimized = False\n \
-#     [SystemParam]\n \
-#     PSPModel = 1\n \
-#     PSPFirmwareVersion = 660\n \
-#     NickName = PPSSPP - Docker Server\n \
-#     WlanPowerSave = False\n \
-#     [Recent]\n \
-#     MaxRecent = 1000\n \
-#     " >"/root/.config/ppsspp/PSP/SYSTEM/ppsspp.ini"
 
 # Expose PPSSPP server port for remote disc streaming
 EXPOSE 8300
