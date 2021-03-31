@@ -83,7 +83,7 @@ function kill_ppsspp() {
     pkill Xvfb
     pkill PPSSPPSDL
     while [[ $(pgrep -fi "xvfb") || $(pgrep -fi "PPSSPPSDL") ]]; do # Wait for PPSSPP process to terminate
-        # echo "Waiting for PPSSPPSDL and xvfb to terminate.."
+        echo "Waiting for PPSSPPSDL and xvfb to terminate.."
         sleep 1
     done
     rm -f /tmp/.X99-lockS # Remove any file-locks of Xvfb
@@ -94,24 +94,24 @@ function restart_ppsspp() {
     kill_ppsspp
 
     # Restart PPSSPP
-    # echo "Restarting PPSSPP (xvfb & PPSSPPSDL)"
+    echo "Restarting PPSSPP (xvfb & PPSSPPSDL)"
     echo "" >$run_log # Clear log of previous run results
     nohup xvfb-run --server-args="-screen 0, 1024x680x24" "/usr/src/app/build/PPSSPPSDL" >$run_log &# Start PPSSPP asynchronously
 
     # Wait until PPSSPP startup finishes (by waiting for log to contain an identifier)
+    echo "Waiting for log to contain an identifier.."
     while [[ ! $(grep -F "$success_output_1_identifier" $run_log) && ! $(grep -F "$success_output_2_identifier" $run_log) && ! $(grep -F "$failure_output_1_identifier" $run_log) ]]; do
-        # echo "Waiting for log to contain an identifier.."
         sleep 1
     done
 
     # echo "Log contains an identifier: $(cat $run_log | tail -n 1)"
 
     if [[ $(grep -F "$success_output_1_identifier" $run_log) || $(grep -F "$success_output_2_identifier" $run_log) ]]; then
-        # echo "Successfully started ppsspp."
+        echo "Successfully started ppsspp."
         ppsspp_start_result=1
     fi
     if [[ $(grep -F "$failure_output_1_identifier" $run_log) ]]; then
-        # echo "Failed to start ppsspp, restarting..."
+        echo "Failed to start ppsspp, restarting..."
         ppsspp_start_result=0
     fi
 }
