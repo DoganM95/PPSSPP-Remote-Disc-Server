@@ -12,7 +12,7 @@ success_output_1_identifier="loading control pad mappings from gamecontrollerdb.
 success_output_2_identifier="ALSA: Couldn't open audio device"
 failure_output_1_identifier="Unable to initialize SDL"
 
-update_interval=20 # The higher the interval, the faster it updates the lib on change, but also increases cpu usage
+update_interval=10 # The higher the interval, the faster it updates the lib on change, but also increases cpu usage
 
 function main() {
     # Start PPSSPP app initially to initialize a default ppsspp.ini file
@@ -61,6 +61,11 @@ function main() {
             echo "Done."
         fi
 
+        if [[ $(cat $run_log | tail -n 1) == "Segmentation fault" || $(cat $run_log | tail -n 1) == "Aborted" ]]; then
+            echo "Detected a 'Segmentation fault' in PPSSPP application. Restarting PPSSPP.."
+            restart_ppsspp_successfully
+        fi
+
         sleep $update_interval
     done
 }
@@ -107,7 +112,7 @@ function restart_ppsspp() {
     # echo "Log contains an identifier: $(cat $run_log | tail -n 1)"
 
     if [[ $(grep -F "$success_output_1_identifier" $run_log) || $(grep -F "$success_output_2_identifier" $run_log) ]]; then
-        echo "Successfully started ppsspp."
+        echo "Successfully (re)started ppsspp."
         ppsspp_start_result=1
     fi
     if [[ $(grep -F "$failure_output_1_identifier" $run_log) ]]; then
