@@ -33,7 +33,7 @@ function main() {
         # Preperations for library updates
         grep -E "^FileName.*" $ppsspp_ini_file >$recents_game_list                  # Copy recent games from ppsspp.ini to a new file
         sed -Ei "s&(FileName.* = )(.*)&\2&" $recents_game_list                      # Remove "FileNameX = " prefixes in said file
-        find "/root/.config/ppsspp/PSP/GAME/" -print -maxdepth 1 >$volume_file_list # Create a list of files in mounted volume (game folder)
+        find "/root/.config/ppsspp/PSP/GAME/" -maxdepth 1 -print >$volume_file_list # Create a list of files in mounted volume (game folder)
         grep -E "$game_matching_regex" "$volume_file_list" >$volume_game_list       # Copy lines matching game-names to a new file
 
         while read -d $'\n' recent_game; do # Iterate over games listed under [Recent] in ppsspp.ini
