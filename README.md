@@ -3,7 +3,7 @@ This software is experimental.
 
 ## Variants
 
-- `nodejs`: Runs a 
+- `nodejs`: Runs a (nodejs) http-server in a docker container, serving games. This is the most lightweight and **recommended** variant.
 
 - `cmake`: Pulls the latest ppsspp from its repo, then compiles a linux version, puts it in a docker container and configures it to serve games.  
 
