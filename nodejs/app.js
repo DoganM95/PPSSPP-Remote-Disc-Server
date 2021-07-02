@@ -13,13 +13,13 @@ const PORT = process.env.PORT || 8300;
  * @property {String} destination Path to actual file.
  */
 
-const rewrites = flattenDirToRewrites(PATH);
-
 const serve = serveStatic(PATH, {
     fallthrough: false,
 });
 
 const server = http.createServer((request, response) => {
+    let rewrites = flattenDirToRewrites(PATH);
+
     if (/^\/($|\?)/.test(request.url)) {
         return handleListing(rewrites, response);
     }
@@ -38,7 +38,6 @@ server.listen(PORT, HOST, () => {
 });
 
 /**
- * 
  * @param {Rewrite[]} rewrites List of supported files.
  * @param {http.ServerResponse} response HTTP response.
  */
@@ -50,9 +49,7 @@ function handleListing(rewrites, response) {
 
 /**
  * Read all files recursively in a folder, and extract playable files.
- *
  * These are then mapped to rewrites for serve.
- *
  * @param {String} dirPath Local path.
  * @param {String} subdir Public path so far.
  * @param {Rewrite[]} list Rewrites.
