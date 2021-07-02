@@ -1,5 +1,4 @@
-Runs a PPSSPP instance in a docker container, serving remote discs.
-This software is experimental.
+# Runs a PPSSPP remote disc server either in node.js or in a docker container
 
 ## Variants
 
