@@ -42,4 +42,4 @@ jobs:
           context: ./nodejs
           file: ./nodejs/Dockerfile
           push: true
-          tags: ${IMAGE_NAME}:latest
+          tags: doganm95/ppsspp-remote-disc-server:latest
