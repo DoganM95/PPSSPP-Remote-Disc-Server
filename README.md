@@ -1,4 +1,6 @@
-# Runs a PPSSPP remote disc server either in node.js or in a docker container
+# Runs a PPSSPP remote disc server
+
+Provide PSP games from e.g. PC to smartphone wirelessly and load them using PPSSPP remote disc 
 
 [![Docker Hub CD (Node.js)](https://github.com/DoganM95/PPSSPP-Remote-Disc-Server/actions/workflows/main.yml/badge.svg)](https://github.com/DoganM95/PPSSPP-Remote-Disc-Server/actions/workflows/main.yml)
 
