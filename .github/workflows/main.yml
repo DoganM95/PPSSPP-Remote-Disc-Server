@@ -21,9 +21,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      - run: |
-          cd ./nodejs
-          docker build -t $IMAGE_NAME .
+      - run: docker build -t $IMAGE_NAME ./nodejs
   docker:
     runs-on: ubuntu-latest
     steps:
@@ -44,4 +42,4 @@ jobs:
           context: ./nodejs
           file: ./nodejs/Dockerfile
           push: true
-          tags: $IMAGE_NAME:latest
+          tags: ${IMAGE_NAME}:latest
