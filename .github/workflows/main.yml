@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: |
-          cd /nodejs
+          cd ./nodejs
           docker build -t $IMAGE_NAME .
   docker:
     runs-on: ubuntu-latest
