@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: docker build -t $IMAGE_NAME ./nodejs
-  docker:
+  push-to-docker-hub:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -42,4 +42,4 @@ jobs:
           context: ./nodejs
           file: ./nodejs/Dockerfile
           push: true
-          tags: doganm95/ppsspp-remote-disc-server:latest
+          tags: ${{ env.IMAGE_NAME }}:latest
