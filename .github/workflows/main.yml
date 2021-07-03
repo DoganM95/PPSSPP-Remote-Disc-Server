@@ -1,4 +1,4 @@
-name: Docker - Node.js CD
+name: Docker Hub CD (Node.js)
 
 on:
   push:
