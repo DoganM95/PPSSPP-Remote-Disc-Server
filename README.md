@@ -1,5 +1,7 @@
 # Runs a PPSSPP remote disc server either in node.js or in a docker container
 
+[![Docker Hub CD (Node.js)](https://github.com/DoganM95/PPSSPP-Remote-Disc-Server/actions/workflows/main.yml/badge.svg)](https://github.com/DoganM95/PPSSPP-Remote-Disc-Server/actions/workflows/main.yml)
+
 ## Variants
 
 - `nodejs`: Runs a (nodejs) http-server in a docker container, serving games (credit to unknownbrackets). This is the most lightweight and **recommended** variant.
