@@ -1,4 +1,4 @@
-# Runs a PPSSPP remote disc server
+# PPSSPP remote disc server
 
 Provide PSP games from e.g. PC to smartphone wirelessly and load them using PPSSPP remote disc 
 
