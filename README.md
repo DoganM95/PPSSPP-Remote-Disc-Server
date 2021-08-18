@@ -13,7 +13,7 @@ Provide PSP games from e.g. PC to smartphone wirelessly and load them using PPSS
 - `flathub`: Failure. Flathub didn't work as planned and gave weird errors while trying to get ppsspp from their repo. Discontinued and archived.  
 
 ## Docker Image
-[doganm95/ppsspp-remote-disc-server](https://hub.docker.com/repository/docker/doganm95/ppsspp-remote-disc-server)
+[doganm95/ppsspp-remote-disc-server](https://hub.docker.com/r/doganm95/ppsspp-remote-disc-server)
 
 ## Credits
 
