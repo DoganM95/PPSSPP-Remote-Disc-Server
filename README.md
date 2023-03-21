@@ -6,7 +6,7 @@ Provide PSP games from e.g. PC to smartphone wirelessly and load them using PPSS
 
 ## Variants
 
-- `nodejs`: Runs a (nodejs) http-server in a docker container, serving games (credit to unknownbrackets). This is the most lightweight and **recommended** variant.
+- `nodejs`: Runs an http-server in a docker container, serving games. This is the most lightweight and **recommended** variant.
 
 - `cmake`: Pulls the latest ppsspp from its repo, then compiles a linux version, puts it in a docker container and configures it to serve games.  
 
