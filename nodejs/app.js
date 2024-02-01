@@ -46,7 +46,7 @@ function flattenDirToRewrites(dirPath, subdir = '/', list = []) {
             return flattenDirToRewrites(path, subdir + file + '/', list);
         }
 
-        if (/\.(cso|iso|pbp|elf|prx|ppdmp)$/i.test(file)) {
+        if (/\.(chd|cso|elf|iso|pbp|ppdmp|prx)$/i.test(file)) {
             list.push({
                 source: '/' + encodeURIComponent(file),
                 destination: subdir + encodeURIComponent(file)
