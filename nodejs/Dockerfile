@@ -1,19 +1,21 @@
-FROM node:14
+FROM node:alpine
+
+# Set working directory
 WORKDIR /usr/src/app
 
+# Create internal iso folder
 RUN mkdir -p /var/isos
 
-# Install dependencies.
+# copy package- & lock.json
 COPY package*.json ./
+
+# Instal dependencies
 RUN npm ci --only=production
 
-# Copy actual app.
+# Copy actual app
 COPY app.js ./
 
-ENV HOST=0.0.0.0
-ENV PORT=8300
-ENV ISO_PATH=/var/isos/
-
-EXPOSE $PORT
+# Expose port to serve on
+EXPOSE 8300
 
 CMD [ "node", "app.js" ]

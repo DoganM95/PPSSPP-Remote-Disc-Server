@@ -1,45 +1,36 @@
-name: Docker Hub CD (Node.js)
+name: Docker CD (Node.js)
 
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
-
-env:
-  IMAGE_NAME: doganm95/ppsspp-remote-disc-server
+    push:
+        paths-ignore:
+            - "README.md"
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [14.x, 15.x]
-    steps:
-      - uses: actions/checkout@master
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@master
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: docker build -t $IMAGE_NAME ./nodejs
-  push-to-docker-hub:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@master
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@master
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@master
-      - name: Login to DockerHub
-        uses: docker/login-action@master
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_ACCESSTOKEN }}
-      - name: Build and push
-        uses: docker/build-push-action@master
-        with:
-          context: ./nodejs
-          file: ./nodejs/Dockerfile
-          push: true
-          tags: ${{ env.IMAGE_NAME }}:latest
+    build-and-push-to-ghcr:
+        runs-on: ubuntu-latest
+        permissions:
+            packages: write
+            contents: read
+        steps:
+            - name: Check out the repo
+              uses: actions/checkout@v4
+
+            - name: Log in to the container registry
+              uses: docker/login-action@v3
+              with:
+                  registry: ghcr.io
+                  username: ${{ github.actor }}
+                  password: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: Build and push docker images
+              uses: docker/build-push-action@v5
+              with:
+                  context: ./nodejs
+                  push: true
+                  tags: |
+                      ghcr.io/doganm95/ppsspp-remote-disc-server:v${{ github.run_number }}
+                      ghcr.io/doganm95/ppsspp-remote-disc-server:${{ github.sha }}
+                      ghcr.io/doganm95/ppsspp-remote-disc-server:latest
+                  labels: |
+                      org.opencontainers.image.source=${{ github.repository_url }}
+                      org.opencontainers.image.revision=${{ github.sha }}
