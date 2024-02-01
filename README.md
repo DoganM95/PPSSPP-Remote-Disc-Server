@@ -42,6 +42,16 @@ docker run \
     ghcr.io/doganm95/ppsspp-remote-disc-server
 ```
 
+### Client (Android/IOS)
+
+- Open the app, click `Settings` -> `Tools` -> `Remote disc streaming`
+- Click `Settings`, enable `manually configure client`
+  - Set `Remote server` to the ip address of the server, e.g. `192.168.0.155`
+  - Set `Remote port` to the respective port, e.g. `8300`
+- Go back and click Browse games
+
+Full documentation [here](https://www.ppsspp.org/docs/reference/disc-streaming/)
+
 ## Docker images
 
 The docker images are based off the `nodejs` variant
