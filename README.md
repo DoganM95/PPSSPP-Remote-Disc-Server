@@ -1,4 +1,4 @@
-# PPSSPP remote disc server
+# Intro
 
 Provide PSP games from e.g. PC to smartphone wirelessly and load them using PPSSPP remote disc 
 
@@ -16,7 +16,7 @@ Provide PSP games from e.g. PC to smartphone wirelessly and load them using PPSS
 
 - `<restart_type>` can be e.g. `always`, more types [here](https://docs.docker.com/config/containers/start-containers-automatically/)
 - `<local_port>` should be the port to serve the app on
-- `<local_dir>` the directory that holds the games, e.g. `"C:\Users\User\Games\PSP\iso` 
+- `<local_dir>` the directory that holds the games, e.g. `C:\Users\User\Games\PSP\iso` 
 
 #### Windows
 
@@ -43,6 +43,8 @@ docker run \
 ```
 
 ## Docker images
+
+The docker images are based off the `nodejs` variant
 
 - Active: [ghcr.io/doganm95/ppsspp-remote-disc-server:latest](https://github.com/DoganM95/PPSSPP-Remote-Disc-Server/pkgs/container/ppsspp-remote-disc-server)
 - Legacy: [doganm95/ppsspp-remote-disc-server](https://hub.docker.com/r/doganm95/ppsspp-remote-disc-server)
