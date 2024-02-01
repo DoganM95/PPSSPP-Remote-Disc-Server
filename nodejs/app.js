@@ -1,57 +1,49 @@
-const finalhandler = require('finalhandler');
-const fs = require('fs');
-const http = require('http');
-const serveStatic = require('serve-static');
+const finalhandler = require("finalhandler");
+const fs = require("fs");
+const http = require("http");
+const serveStatic = require("serve-static");
 
-const PATH = process.env.ISO_PATH || '.';
-const HOST = process.env.HOST || '0.0.0.0';
-const PORT = process.env.PORT || 8300;
+const internalIsoPath = "/var/isos/";
+const serverPort = 8300;
 
-const serve = serveStatic(PATH, {
-    fallthrough: false,
-});
+const serve = serveStatic(internalIsoPath, { fallthrough: false });
 
-const server = http.createServer((request, response) => {
-    let rewrites = flattenDirToRewrites(PATH);
-
-    if (/^\/($|\?)/.test(request.url)) {
-        return handleListing(rewrites, response);
-    }
-
-    for (const rewrite of rewrites) {
-        if (request.url === rewrite.source) {
-            request.url = rewrite.destination;
-            break;
-        }
-    }
-    return serve(request, response, finalhandler(request, response));
-});
-
-server.listen(PORT, HOST, () => {
-    console.log(`Running at http://${HOST}:${PORT}`);
-});
-
-function handleListing(rewrites, response) {
-    response.setHeader('Content-Type', 'text/plain');
-    response.writeHead(200);
-    response.end('/\n' + rewrites.map(rewrite => rewrite.source).join('\n'));
+function handleListing(rewrites, res) {
+    res.setHeader("Content-Type", "text/plain");
+    res.writeHead(200).end("/\n" + rewrites.map((rewrite) => rewrite.source).join("\n"));
 }
 
-function flattenDirToRewrites(dirPath, subdir = '/', list = []) {
+function flattenDirToRewrites(dirPath, subdir = "/", list = []) {
     const files = fs.readdirSync(dirPath);
 
     return files.reduce((list, file) => {
-        const path = dirPath + '/' + file;
+        const path = dirPath + "/" + file;
         if (fs.statSync(path).isDirectory()) {
-            return flattenDirToRewrites(path, subdir + file + '/', list);
+            return flattenDirToRewrites(path, subdir + file + "/", list);
         }
-
         if (/\.(cso|iso|pbp|elf|prx|ppdmp)$/i.test(file)) {
             list.push({
-                source: '/' + encodeURIComponent(file),
-                destination: subdir + encodeURIComponent(file)
+                source: "/" + encodeURIComponent(file),
+                destination: subdir + encodeURIComponent(file),
             });
         }
         return list;
     }, list);
 }
+
+const server = http.createServer((req, res) => {
+    let rewrites = flattenDirToRewrites(internalIsoPath);
+    if (/^\/($|\?)/.test(req.url)) return handleListing(rewrites, res);
+
+    for (const rewrite of rewrites) {
+        if (req.url === rewrite.source) {
+            req.url = rewrite.destination;
+            break;
+        }
+    }
+    return serve(req, res, finalhandler(req, res));
+});
+
+server.listen(serverPort, () => {
+    console.log(`Serving on port ${serverPort}`);
+});
