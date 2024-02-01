@@ -6,7 +6,7 @@ ppsspp_ini_file="/root/.config/ppsspp/PSP/SYSTEM/ppsspp.ini"
 volume_file_list="/root/.config/ppsspp/PSP/SYSTEM/volume_file_list.txt"
 volume_game_list="/root/.config/ppsspp/PSP/SYSTEM/volume_game_list.txt"
 recents_game_list="/root/.config/ppsspp/PSP/SYSTEM/recents_game_list.txt"
-game_matching_regex=".*\.(iso|ISO|cso|CSO|dax|DAX)"
+game_matching_regex=".*\.(chd|CHD|cso|CSO|dax|DAX|iso|ISO)"
 
 success_output_1_identifier="loading control pad mappings from gamecontrollerdb.txt"
 success_output_2_identifier="ALSA: Couldn't open audio device"
