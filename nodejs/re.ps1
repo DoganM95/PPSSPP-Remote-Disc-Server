@@ -1,8 +1,8 @@
-# Use this file with caution!. Will kill and delete any existing container, then start ppsspp
-docker ps -a --format "{{.Names}}" | Where-Object { $_ -like "*ppsspp-remote-disc-server*" } | ForEach-Object { docker stop $_ }
+# Stop and delete any running ppsspp-remote-disc-server container
+docker ps -a --format "{{.Names}}" | Where-Object { $_ -like "*ppsspp-remote-disc-server*" } | ForEach-Object { docker stop $_; docker rm $_ }; 
 
-# Delete any existing rds docker images
-docker ps -a --format "{{.Names}}" | Where-Object { $_ -like "*ppsspp-remote-disc-server*" } | ForEach-Object { docker stop $_; docker rm $_ }; docker images --format "{{.Repository}}:{{.Tag}}" | Where-Object { $_ -like "*ppsspp-remote-disc-server*" } | ForEach-Object { docker rmi $_ }
+# Delete any existing ppsspp-remote-disc-server docker images
+docker images --format "{{.Repository}}:{{.Tag}}" | Where-Object { $_ -like "*ppsspp-remote-disc-server*" } | ForEach-Object { docker rmi $_ }
 
 # Build the image locally from source
 docker build -t ppsspp-remote-disc-server .
