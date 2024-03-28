@@ -28,7 +28,7 @@ jobs:
                   context: ./nodejs
                   push: true
                   tags: |
-                      ghcr.io/doganm95/ppsspp-remote-disc-server:v${{ github.run_number }}
+                      ghcr.io/doganm95/ppsspp-remote-disc-server:v1.${{ github.run_number }}
                       ghcr.io/doganm95/ppsspp-remote-disc-server:${{ github.sha }}
                       ghcr.io/doganm95/ppsspp-remote-disc-server:latest
                   labels: |
