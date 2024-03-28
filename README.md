@@ -52,12 +52,10 @@ docker run \
 
 Full documentation [here](https://www.ppsspp.org/docs/reference/disc-streaming/)
 
-## Docker images
+## Notes
 
-The docker images are based off the `nodejs` variant
-
-- Active: [ghcr.io/doganm95/ppsspp-remote-disc-server:latest](https://github.com/DoganM95/PPSSPP-Remote-Disc-Server/pkgs/container/ppsspp-remote-disc-server)
-- Legacy: [doganm95/ppsspp-remote-disc-server](https://hub.docker.com/r/doganm95/ppsspp-remote-disc-server)
+- Browsing remote discs for the first time, it may only shows empty tiles first, while the games and their icons load. This happens every time, a new game is added and may take a minute, depending on your hardware. After that, the list will be cached and load immediately the next time (except a new game is added again)
+- The ghcr image is based off the `nodejs` variant
 
 ## Credits
 
