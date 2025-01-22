@@ -10,7 +10,7 @@ const serve = serveStatic(internalIsoPath, { fallthrough: false });
 
 function handleListing(rewrites, res) {
     res.setHeader("Content-Type", "text/plain");
-    res.writeHead(200).end("/\n" + rewrites.map((rewrite) => rewrite.source).join("\n"));
+    res.writeHead(200).end("/\n" + rewrites.map((rewrite) => rewrite.destination).join("\n"));
 }
 
 function flattenDirToRewrites(dirPath, subdir = "/", list = []) {
